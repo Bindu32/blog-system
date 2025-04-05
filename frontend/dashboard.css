@@ -1,0 +1,129 @@
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f0f0f;
+    color: white;
+    padding: 20px;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo h1 span {
+    color: #b85aff;
+  }
+  
+  .logout-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background: white;
+    color: black;
+  }
+  
+  /* Top Posts */
+  .top-posts h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .post {
+    background: linear-gradient(135deg, #ff5f6d, #ffc371, #5f72be, #9b23ea);
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .post:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Categories */
+  .categories h2 {
+    font-size: 24px;
+    margin: 40px 0 20px;
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+  }
+  
+  .category {
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .category:hover {
+    transform: scale(1.05);
+  }
+  
+  .tech {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+  }
+  
+  .life {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+  }
+  
+  .travel {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+  }
+  
+  .food {
+    background: linear-gradient(135deg, #ff4e50, #f9d423);
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  
+    .top-posts h2,
+    .categories h2 {
+      font-size: 22px;
+    }
+  
+    .post {
+      font-size: 16px;
+    }
+  }
+  

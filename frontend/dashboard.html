@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spectrum Blog Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="https://img.icons8.com/ios/50/ffffff/feather.png" alt="logo" />
+      <h1><span>SPECTRUM</span> BLOG</h1>
+    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <main>
+    <section class="top-posts">
+      <h2>Top 5 Blog Posts</h2>
+      <div class="post">Blog Post Title</div>
+      <div class="post">Blog Post Title</div>
+      <div class="post">Blog Post Title</div>
+      <div class="post">Blog Post Title</div>
+      <div class="post">Blog Post Title</div>
+    </section>
+
+    <section class="categories">
+      <h2>Browse by Category</h2>
+      <div class="category-grid">
+        <div class="category tech">💻 Technology</div>
+        <div class="category life">💙 Lifestyle</div>
+        <div class="category travel">🛫 Travel</div>
+        <div class="category food">🍴 Food</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
