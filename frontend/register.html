@@ -112,6 +112,44 @@
       background-color: #333;
     }
 
+    .oauth-buttons {
+      margin-top: 20px;
+    }
+
+    .oauth-buttons button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .oauth-buttons button.google {
+      background-color: #4285F4;
+      color: white;
+    }
+
+    .oauth-buttons button.google:hover {
+      background-color: #357ae8;
+    }
+
+    .oauth-buttons button.github {
+      background-color: #333;
+      color: white;
+    }
+
+    .oauth-buttons button.github:hover {
+      background-color: #444;
+    }
+
     .login-link {
       margin-top: 20px;
       font-size: 14px;
@@ -150,41 +188,42 @@
       <input type="password" placeholder="Password" name="password" required />
       <button type="submit">Sign Up</button>
     </form>
+    <div class="oauth-buttons">
+      <button class="google" onclick="googleLogin()">
+        <img src="https://img.icons8.com/color/24/google-logo.png" alt="Google Logo" />
+        Sign Up with Google
+      </button>
+      <button class="github" onclick="githubLogin()">
+        <img src="https://img.icons8.com/ios-glyphs/24/github.png" alt="GitHub Logo" />
+        Sign Up with GitHub
+      </button>
+    </div>
     <div class="login-link">
       Already have an account? <a href="login.html">Log in</a>
     </div>
   </div>
 
   <script>
-    document.getElementById('registerForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
+    function googleLogin() {
+      const googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+      const clientId = "YOUR_GOOGLE_CLIENT_ID"; // Replace with your Google Client ID
+      const redirectUri = "http://localhost:3000"; // Replace with your redirect URI
+      const scope = "email profile";
+      const responseType = "token";
 
-      const username = e.target.username.value;
-      const email = e.target.email.value;
-      const password = e.target.password.value;
+      const authUrl = `${googleAuthUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`;
+      window.location.href = authUrl;
+    }
 
-      try {
-        const res = await fetch("http://localhost:5000/api/auth/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ name: username, email, password })
-        });
+    function githubLogin() {
+      const githubAuthUrl = "https://github.com/login/oauth/authorize";
+      const clientId = "YOUR_GITHUB_CLIENT_ID"; // Replace with your GitHub Client ID
+      const redirectUri = "http://localhost:3000"; // Replace with your redirect URI
+      const scope = "read:user user:email";
 
-        const data = await res.json();
-
-        if (res.ok) {
-          alert("Registration successful! Redirecting to login...");
-          window.location.href = "login.html";
-        } else {
-          alert(data.message || "Registration failed.");
-        }
-      } catch (err) {
-        console.error("Error:", err);
-        alert("Something went wrong while registering.");
-      }
-    });
+      const authUrl = `${githubAuthUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+      window.location.href = authUrl;
+    }
   </script>
 </body>
 </html>
