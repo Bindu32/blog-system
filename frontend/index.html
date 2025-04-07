@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Spectrum Blog</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css"/>  
 </head>
 <body>
 
@@ -12,12 +12,13 @@
     <div class="logo">🌈 Spectrum Blog</div>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Register</a>
-      <a href="#">Different</a>
+      <a href="#" id="register-link">Register</a>
+      <a href="#about-spectrum">About Spectrum</a>
     </nav>
   </header>
 
   <div class="container">
+    <!-- Top Blog Posts Section -->
     <h1>Top Blog Posts</h1>
     <div class="blog-posts">
       <div class="card" data-category="Technology">
@@ -42,27 +43,65 @@
       </div>
     </div>
 
+    <!-- Discover Our Blogs Section -->
     <h2>Discover Our Blogs</h2>
     <div class="categories">
-      <div class="cat"><img src="https://img.icons8.com/ios-filled/50/circuit.png"/><span>Technology</span></div>
-      <div class="cat"><img src="https://img.icons8.com/ios-filled/50/candle.png"/><span>Lifestyle</span></div>
-      <div class="cat"><img src="https://img.icons8.com/ios-filled/50/airplane.png"/><span>Travel</span></div>
-      <div class="cat"><img src="https://img.icons8.com/ios-filled/50/heart-with-pulse.png"/><span>Health</span></div>
+      <div class="cat">
+        <img src="https://img.icons8.com/ios-filled/50/circuit.png"/>
+        <span>Technology</span>
+      </div>
+      <div class="cat">
+        <img src="https://img.icons8.com/ios-filled/50/candle.png"/>
+        <span>Lifestyle</span>
+      </div>
+      <div class="cat">
+        <img src="https://img.icons8.com/ios-filled/50/airplane.png"/>
+        <span>Travel</span>
+      </div>
+      <div class="cat">
+        <img src="https://img.icons8.com/ios-filled/50/heart-with-pulse.png"/>
+        <span>Health</span>
+      </div>
     </div>
+    <button class="view-btn"id="view-all-categories" >View All Categories</button>
 
-    <button class="view-btn">View All Categories</button>
-
-    <section class="about">
+    <!-- About Spectrum Blog Section -->
+    <section class="about" id="about-spectrum">
       <div class="text">
         <h2>About Spectrum Blog</h2>
         <p><span class="gradient-text">Expanding Your View Through Diverse Topics</span></p>
-        <button>Read More</button>
+        <p class="more-text" style="display: none;">
+          Spectrum Blog is your go-to platform for insightful articles, creative ideas, and the latest trends across various domains. Join us to explore a world of knowledge and inspiration.
+        </p>
+        <button id="read-more-btn">Read More</button>
       </div>
       <div class="img">
         <img src="https://img.icons8.com/external-flat-icons-inmotus-design/100/external-blog-graphic-design-flat-icons-inmotus-design.png"/>
       </div>
     </section>
 
+    <section class="different">
+      <h2>Why Choose Spectrum Blog?</h2>
+      <div class="features">
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/idea.png" alt="Creative Content Icon" />
+          <h3>Creative Content</h3>
+          <p>We deliver unique and engaging content tailored to your interests.</p>
+        </div>
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/clock.png" alt="Timely Updates Icon" />
+          <h3>Timely Updates</h3>
+          <p>Stay informed with the latest trends and updates in various fields.</p>
+        </div>
+        <div class="feature">
+          <img src="https://img.icons8.com/ios-filled/50/globe.png" alt="Community Icon" />
+          <h3>Global Community</h3>
+          <p>Join a vibrant community of readers and contributors from around the world.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
     <footer class="footer">
       <h3>Help Center</h3>
       <p>Search for assistance</p>
