@@ -190,7 +190,7 @@
     </form>
     <div class="oauth-buttons">
       <button class="google" onclick="googleLogin()">
-        <img src="https://img.icons8.com/color/24/google-logo.png" alt="Google Logo" />
+        <img src="assets/" alt="Google Logo" />
         Sign Up with Google
       </button>
       <button class="github" onclick="githubLogin()">
@@ -202,7 +202,43 @@
       Already have an account? <a href="login.html">Log in</a>
     </div>
   </div>
+  <script>
+    const form = document.getElementById('registerForm');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // stop page reload
+  
+      const formData = new FormData(form);
+      const username = formData.get('username');
+      const email = formData.get('email');
+      const password = formData.get('password');
+  
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password }),
+        });
 
+        
+        
+   
+
+        const data = await res.json();
+  
+        if (res.ok) {
+          alert('Registration successful!');
+          window.location.href = 'login.html'; // or dashboard
+        } else {
+          alert(data.message || 'Registration failed');
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        alert('Something went wrong');
+      }
+    });
+  </script>
+  
   <script>
     function googleLogin() {
       const googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
