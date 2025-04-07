@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -112,9 +112,29 @@
       background-color: #333;
     }
 
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .logo-text{
+      font-size: 24px;
+      margin-top: 8px;
+    }
+
     .oauth-buttons {
       margin-top: 20px;
     }
+
+    .google-img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
 
     .oauth-buttons button {
       display: flex;
@@ -175,7 +195,7 @@
 <body>
   <div class="container">
     <div class="logo">
-      <div class="logo-icon">✒️</div>
+      <img src="https://github.com/Bindu32/blog-system/blob/main/frontend/assets/spectrum-icon.png?raw=true" alt="Spectrum Logo" class="logo-img" />
       <div class="logo-text">
         <span>SPECTRUM</span>
         <span>BLOG</span>
@@ -190,7 +210,7 @@
     </form>
     <div class="oauth-buttons">
       <button class="google" onclick="googleLogin()">
-        <img src="assets/" alt="Google Logo" />
+        <img src="https://i.pinimg.com/736x/c8/b8/12/c8b8129127bada9fa699aeba388b3b2b.jpg" alt="Google Logo" class="google-img" />
         Sign Up with Google
       </button>
       <button class="github" onclick="githubLogin()">
