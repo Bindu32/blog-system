@@ -1,47 +1,93 @@
-// You can expand this later — animations, fetching blog data, scroll effects etc.
-// You can expand this later — animations, fetching blog data, scroll effects etc.
 console.log("Page loaded and ready!");
-document.getElementById('register-link').addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent the default anchor behavior
-      window.location.href = 'register.html'; // Redirect to the register page
+
+// ===================
+// Register Redirect
+// ===================
+const registerLink = document.getElementById('register-link');
+if (registerLink) {
+  registerLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.href = 'register.html';
   });
-  document.getElementById('read-more-btn').addEventListener('click', function () {
-    const moreText = document.querySelector('.more-text');
-    const btn = this;
-  
-    if (moreText.style.display === 'none') {
-      moreText.style.display = 'block';
-      btn.textContent = 'Read Less';
-    } else {
-      moreText.style.display = 'none';
-      btn.textContent = 'Read More';
+}
+
+// ===================
+// Read More Toggle
+// ===================
+const readMoreBtn = document.getElementById('read-more-btn');
+const moreText = document.querySelector('.more-text');
+
+if (readMoreBtn && moreText) {
+  readMoreBtn.addEventListener('click', () => {
+    const isHidden = moreText.style.display === 'none';
+    moreText.style.display = isHidden ? 'block' : 'none';
+    readMoreBtn.textContent = isHidden ? 'Read Less' : 'Read More';
+  });
+}
+
+// ===================
+// View All Categories Scroll
+// ===================
+const viewAllBtn = document.getElementById('view-all-categories');
+if (viewAllBtn) {
+  viewAllBtn.addEventListener('click', () => {
+    const categoriesSection = document.querySelector('.categories');
+    if (categoriesSection) {
+      categoriesSection.scrollIntoView({ behavior: 'smooth' });
     }
   });
-  document.getElementById('view-all-categories').addEventListener('click', () => {
-    const categoriesSection = document.querySelector('.categories');
-    categoriesSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ===================
+// Dark/Light Mode Toggle
+// ===================
+const toggleBtn = document.getElementById("mode-toggle");
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+    toggleBtn.textContent = isDark ? "☀" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   });
-  const toggleBtn = document.getElementById("mode-toggle");
 
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+  // Load saved theme
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀";
+    }
+  });
+}
 
-  // Optional: Change icon
-  if (document.body.classList.contains("dark-mode")) {
-    toggleBtn.textContent = "☀";
-  } else {
-    toggleBtn.textContent = "🌙";
-  }
+// ===================
+// Settings Page Logic (optional, auto-executes only if elements exist)
+// ===================
+if (window.location.pathname.includes("settings.html")) {
+  const form = document.getElementById("settings-form");
+  const usernameInput = document.getElementById("username");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const deleteBtn = document.getElementById("delete-account");
 
-  // Optional: Save preference
-  localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-});
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const updatedData = {
+      username: usernameInput?.value,
+      email: emailInput?.value,
+      password: passwordInput?.value,
+    };
+    console.log("Updated profile data:", updatedData);
+    alert("Settings saved! (placeholder)");
+  });
 
-// Load saved theme
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleBtn.textContent = "☀";
-  }
-});
+  deleteBtn?.addEventListener("click", () => {
+    const confirmDelete = confirm("Are you sure you want to delete your account?");
+    if (confirmDelete) {
+      console.log("Account deleted.");
+      alert("Your account has been deleted! (placeholder)");
+    }
+  });
+}
