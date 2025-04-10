@@ -1,129 +1,115 @@
-/* Reset & base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #0f0f0f;
-    color: white;
-    padding: 20px;
-  }
-  
-  /* Header */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo h1 span {
-    color: #b85aff;
-  }
-  
-  .logout-btn {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 8px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .logout-btn:hover {
-    background: white;
-    color: black;
-  }
-  
-  /* Top Posts */
-  .top-posts h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .post {
-    background: linear-gradient(135deg, #ff5f6d, #ffc371, #5f72be, #9b23ea);
-    padding: 15px 20px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .post:hover {
-    transform: scale(1.03);
-  }
-  
-  /* Categories */
-  .categories h2 {
-    font-size: 24px;
-    margin: 40px 0 20px;
-  }
-  
-  .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 15px;
-  }
-  
-  .category {
-    padding: 15px;
-    border-radius: 15px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .category:hover {
-    transform: scale(1.05);
-  }
-  
-  .tech {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-  }
-  
-  .life {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-  }
-  
-  .travel {
-    background: linear-gradient(135deg, #f7971e, #ffd200);
-  }
-  
-  .food {
-    background: linear-gradient(135deg, #ff4e50, #f9d423);
-  }
-  
-  /* Responsive */
-  @media (max-width: 600px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-    }
-  
-    .top-posts h2,
-    .categories h2 {
-      font-size: 22px;
-    }
-  
-    .post {
-      font-size: 16px;
-    }
-  }
-  
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Blue to purple gradient */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-options button {
+  background-color: #4caf50; /* Green button */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.user-options button:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.profile-btn {
+  background-color: #2196f3; /* Blue button for profile */
+}
+
+.profile-btn:hover {
+  background-color: #1976d2; /* Darker blue on hover */
+}
+
+.edit-btn {
+  background-color: #ff9800; /* Orange button for edit */
+}
+
+.edit-btn:hover {
+  background-color: #f57c00; /* Darker orange on hover */
+}
+
+.logout-btn {
+  background-color: #d32f2f; /* Red button */
+}
+
+.logout-btn:hover {
+  background-color: #b71c1c; /* Darker red on hover */
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 14px;
+}
+
+footer a {
+  color: #4caf50; /* Green links */
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
