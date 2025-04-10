@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1e3c72, #2a5298); /* Blue to purple gradient */
+      color: white;
+    }
+    
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-bar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+    
+    .nav-bar a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    
+    .nav-bar a:hover {
+      text-decoration: underline;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1, h2 {
+      text-align: center;
+      color: #ffeb3b; /* Yellow for headings */
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+    
+    ul.social-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    ul.social-list li {
+      margin: 10px 0;
+    }
+    
+    ul.social-list a {
+      color: #4caf50; /* Green for links */
+      text-decoration: none;
+      font-size: 16px;
+    }
+    
+    ul.social-list a:hover {
+      text-decoration: underline;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 14px;
+    }
+    
+    .footer-bottom {
+      margin-top: 10px;
+    }
