@@ -3,39 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spectrum Blog Dashboard</title>
+  <title>Dashboard - BlogSpace</title>
   <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
-
   <header>
-    <div class="logo">
-      <img src="https://img.icons8.com/ios/50/ffffff/feather.png" alt="logo" />
-      <h1><span>SPECTRUM</span> BLOG</h1>
+    <h1>Spectrum Blog</h1>
+    <div class="user-options">
+      <button onclick="window.location.href='create-blog.html'" class="create-btn">➕ Create Blog</button>
+      <button onclick="window.location.href='edit-blog.html'" class="edit-btn">✏️ Edit Blog</button>
+      <button onclick="window.location.href='profile.html'" class="profile-btn">👤 Profile</button>
+      <button onclick="logout()" class="logout-btn">Logout</button>
     </div>
-    <button class="logout-btn" onclick="logout()">Logout</button>
   </header>
 
   <main>
-    <section class="top-posts">
-      <h2>Top 5 Blog Posts</h2>
-      <div class="post">Blog Post Title</div>
-      <div class="post">Blog Post Title</div>
-      <div class="post">Blog Post Title</div>
-      <div class="post">Blog Post Title</div>
-      <div class="post">Blog Post Title</div>
-    </section>
-
-    <section class="categories">
-      <h2>Browse by Category</h2>
-      <div class="category-grid">
-        <div class="category tech">💻 Technology</div>
-        <div class="category life">💙 Lifestyle</div>
-        <div class="category travel">🛫 Travel</div>
-        <div class="category food">🍴 Food</div>
-      </div>
-    </section>
+    <div id="blog-list" class="blog-container">
+      <!-- Blogs will be dynamically inserted here -->
+    </div>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Spectrum Blog. All rights reserved.</p>
+    <p>Follow us on:
+      <a href="https://facebook.com" target="_blank">Facebook</a> |
+      <a href="https://twitter.com" target="_blank">Twitter</a> |
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </p>
+  </footer>
 
   <script src="dashboard.js"></script>
 </body>
