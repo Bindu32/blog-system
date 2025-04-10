@@ -10,40 +10,38 @@
 
   <header class="nav-bar">
     <div class="logo">
-      <img src = "https://github.com/Bindu32/blog-system/blob/main/frontend/assets/spectrum-icon.png?raw=true" style="width: 30px; height: 30px"/> 
-      <span class ="gradients">SPECTRUM</span> <span class="lights">BLOG</span>
+      <img src="https://github.com/Bindu32/blog-system/blob/main/frontend/assets/spectrum-icon.png?raw=true" style="width: 30px; height: 30px"/> 
+      <span class="gradients">SPECTRUM</span> <span class="lights">BLOG</span>
     </div>
     <nav>
       <a href="#">Home</a>
       <a href="#" id="register-link">Register</a>
       <a href="#about-spectrum">About Spectrum</a>
+      <button id="mode-toggle" style="margin-left: 15px; padding: 5px 10px;">🌙</button>
     </nav>
   </header>
+  
 
   <div class="container">
     <!-- Top Blog Posts Section -->
     <h1>Top Blog Posts</h1>
     <div class="blog-posts">
-      <div class="card" data-category="Technology">
+      <a href="ai-blog.html" class="card" data-category="Technology">
         <img src="https://i.pinimg.com/736x/90/9d/f1/909df1df664fb611e390f9b6aa3c55fd.jpg" style="width: 100%; height: auto;"/>
         <h3>Breaking New Innovations in AI</h3>
-        <p>58 Comments</p>
-      </div>
-      <div class="card" data-category="Lifestyle">
+      </a>
+      <a href="sleep-blog.html" class="card" data-category="Lifestyle">
         <img src="https://i.pinimg.com/736x/61/89/45/618945432aa216172dfaf53c666c53d9.jpg" style="width: 100%; height: auto;"/>
         <h3>Nighttime Rituals for Restful Sleep</h3>
-        <p>24 Comments</p>
-      </div>
-      <div class="card" data-category="Travel">
+      </a>
+      <a href="travel-blog.html" class="card" data-category="Travel">
         <img src="https://i.pinimg.com/736x/46/46/85/4646858076b1e7f4be0b56569dce64a2.jpg" style="width: 100%; height: auto;"/>
         <h3>Exploring the Alpine Landscapes</h3>
-        <p>38 Comments</p>
-      </div>
-      <div class="card" data-category="Health">
+      </a>
+      <a href="meditation-blog.html" class="card" data-category="Health">
         <img src="https://i.pinimg.com/736x/42/f6/6f/42f66f2c74b77da0a58bb5921e45b3a5.jpg" style="width: 100%; height: auto;"/>
         <h3>The Benefits of Daily Meditation</h3>
-        <p>12 Comments</p>
-      </div>
+      </a>
     </div>
 
     <!-- Discover Our Blogs Section -->
@@ -66,7 +64,7 @@
         <span>Health</span>
       </div>
     </div>
-    <button class="view-btn"id="view-all-categories" >View All Categories</button>
+    <button class="view-btn" id="view-all-categories">View All Categories</button>
 
     <!-- About Spectrum Blog Section -->
     <section class="about" id="about-spectrum">
@@ -79,7 +77,7 @@
         <button id="read-more-btn">Read More</button>
       </div>
       <div class="img">
-        <img src="https://cdn.rcd.gg/PreMiD.png" style =" width : 70%;  height : auto;" />
+        <img src="https://cdn.rcd.gg/PreMiD.png" style="width: 70%; height: auto;" />
       </div>
     </section>
 
