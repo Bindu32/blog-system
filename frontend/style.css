@@ -359,3 +359,50 @@ h1, h2 {
     margin-top: 20px;
   }
 }
+/* Default Light Mode */
+body {
+  background-color:aliceblue;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.nav-bar {
+  background-color:#777;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .nav-bar {
+  background-color: #1e1e1e;
+}
+
+.card, .feature, .cat {
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .card,
+body.dark-mode .feature,
+body.dark-mode .cat {
+  background-color: #2c2c2c;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* Button look can also change */
+#mode-toggle {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+body.dark-mode #mode-toggle {
+  border-color: white;
+  background-color: #333;
+  color: white;
+}
