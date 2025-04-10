@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -223,41 +223,55 @@
     </div>
   </div>
   <script>
-    const form = document.getElementById('registerForm');
+    // Handle Registration Submit
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
   
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // stop page reload
-  
-      const formData = new FormData(form);
-      const username = formData.get('username');
-      const email = formData.get('email');
-      const password = formData.get('password');
+      const username = document.querySelector('input[name="username"]').value.trim();
+      const email = document.querySelector('input[name="email"]').value.trim();
+      const password = document.querySelector('input[name="password"]').value.trim();
   
       try {
-        const res = await fetch('http://localhost:5000/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }),
+        const res = await fetch('http://localhost:3000/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password }),
         });
-
-        
-        
-   
-
+  
         const data = await res.json();
   
         if (res.ok) {
-          alert('Registration successful!');
-          window.location.href = 'login.html'; // or dashboard
+          // Redirect to login page after successful registration
+          alert('Registration successful! Redirecting to login page...');
+          window.location.href = 'login.html';
         } else {
-          alert(data.message || 'Registration failed');
+          alert(data.message || '❌ Registration failed.');
         }
       } catch (err) {
         console.error('Error:', err);
-        alert('Something went wrong');
+        alert('❌ Something went wrong. Please try again.');
       }
     });
-  </script>
+  
+    // Add click event for the submit button
+    document.querySelector('button[type="submit"]').addEventListener('click', () => {
+      console.log('Submit button clicked');
+    });
+// 👁 Password Toggle
+document.getElementById('togglePassword').addEventListener('click', () => {
+  const passwordInput = document.getElementById('password');
+  const toggleBtn = document.getElementById('togglePassword');
+
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleBtn.textContent = '🙈';
+  } else {
+    passwordInput.type = 'password';
+    toggleBtn.textContent = '👁';
+  }
+});
+</script>
+
   
   <script>
     function googleLogin() {
