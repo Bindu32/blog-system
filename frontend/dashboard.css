@@ -32,7 +32,6 @@ header h1 {
 }
 
 .user-options button {
-  background-color: #4caf50; /* Green button */
   color: white;
   border: none;
   padding: 8px 15px;
@@ -42,32 +41,39 @@ header h1 {
   transition: background-color 0.3s ease;
 }
 
-.user-options button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+.create-btn {
+  background-color: #4caf50;
 }
-
-.profile-btn {
-  background-color: #2196f3; /* Blue button for profile */
-}
-
-.profile-btn:hover {
-  background-color: #1976d2; /* Darker blue on hover */
+.create-btn:hover {
+  background-color: #388e3c;
 }
 
 .edit-btn {
-  background-color: #ff9800; /* Orange button for edit */
+  background-color: #ff9800;
+}
+.edit-btn:hover {
+  background-color: #f57c00;
 }
 
-.edit-btn:hover {
-  background-color: #f57c00; /* Darker orange on hover */
+.profile-btn {
+  background-color: #2196f3;
+}
+.profile-btn:hover {
+  background-color: #1976d2;
 }
 
 .logout-btn {
-  background-color: #d32f2f; /* Red button */
+  background-color: #d32f2f;
+}
+.logout-btn:hover {
+  background-color: #b71c1c;
 }
 
-.logout-btn:hover {
-  background-color: #b71c1c; /* Darker red on hover */
+.settings-btn {
+  background-color: #9c27b0;
+}
+.settings-btn:hover {
+  background-color: #7b1fa2;
 }
 
 /* Main Content */
