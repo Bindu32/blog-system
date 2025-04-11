@@ -1,7 +1,14 @@
 console.log("Page loaded and ready!");
 
 // ===================
-// Register Redirect
+// Global Redirect Function for Inline Buttons
+// ===================
+function redirectToRegister() {
+  window.location.href = "register.html";
+}
+
+// ===================
+// Register Redirect Link (Nav)
 // ===================
 const registerLink = document.getElementById('register-link');
 if (registerLink) {
@@ -63,7 +70,7 @@ if (toggleBtn) {
 }
 
 // ===================
-// Settings Page Logic (optional, auto-executes only if elements exist)
+// Settings Page Logic
 // ===================
 if (window.location.pathname.includes("settings.html")) {
   const form = document.getElementById("settings-form");
