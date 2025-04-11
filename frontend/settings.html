@@ -3,68 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Settings - Spectrum Blog</title>
-  <link rel="stylesheet" href="settings.css"/>
+  <title>Settings</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+
+    .settings-container {
+      max-width: 500px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 10px violet;
+    }
+
+    .settings-container h2 {
+      text-align: center;
+      color: violet;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.3rem;
+      color: cyan;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid gray;
+      background: #222;
+      color: white;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .rainbow-btn {
+      padding: 0.8rem 1.5rem;
+      border: 2px solid violet;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .rainbow-btn:hover {
+      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      color: black;
+      border: 2px solid white;
+    }
+  </style>
 </head>
 <body>
+  <div class="settings-container">
+    <h2>⚙️ User Settings</h2>
+    <form id="settingsForm">
+      <label for="profilePic">Profile Picture URL</label>
+      <input type="text" id="profilePic" name="profilePic" placeholder="https://...">
 
-  <header class="nav-bar">
-    <div class="logo">
-      <img src="https://github.com/Bindu32/blog-system/blob/main/frontend/assets/spectrum-icon.png?raw=true" style="width: 30px; height: 30px"/> 
-      <span class="gradients">SPECTRUM</span> <span class="lights">BLOG</span>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="register.html">Register</a>
-      <a href="#about-spectrum">About Spectrum</a>
-      <button id="mode-toggle" style="margin-left: 15px; padding: 5px 10px;">🌙</button>
-    </nav>
-  </header>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" disabled />
 
-  <div class="container">
-    <h1>Account Settings</h1>
+      <label for="email">Email (optional)</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com">
 
-    <form class="settings-form">
-      <label>Username:</label>
-      <input type="text" placeholder="Enter new username" />
+      <label for="password">New Password</label>
+      <input type="password" id="password" name="password" placeholder="Leave blank to keep current">
 
-      <label>Email:</label>
-      <input type="email" placeholder="Enter new email" />
-
-      <label>Password:</label>
-      <input type="password" placeholder="Enter new password" />
-
-      <label>Profile Picture:</label>
-      <input type="file" accept="image/*" />
-
-      <label>
-        <input type="checkbox" id="themeToggle" />
-        Toggle Dark/Light Mode
-      </label>
-
-      <button type="submit" class="view-btn">Save Changes</button>
+      <div class="button-group">
+        <button type="submit" class="rainbow-btn">💾 Save</button>
+        <button type="button" class="rainbow-btn" onclick="cancelSettings()">❌ Cancel</button>
+      </div>
     </form>
-
-    <hr class="divider" />
-
-    <div class="delete-section">
-      <h3>Delete Account</h3>
-      <p class="warning-text">Warning: This action is permanent and cannot be undone.</p>
-      <button class="delete-btn">Delete My Account</button>
-    </div>
   </div>
-
-  <section id="about-spectrum" class="about-section">
-    <h2>About Spectrum Blog</h2>
-    <p>
-      Spectrum Blog is a platform where users can share their thoughts, ideas, and stories with the world. 
-      Our mission is to empower writers and creators by providing a space to express themselves freely.
-    </p>
-    <p>
-      Whether you're a seasoned blogger or just starting out, Spectrum Blog offers tools to help you create, 
-      edit, and share your content effortlessly.
-    </p>
-  </section>
 
   <script src="settings.js"></script>
 </body>

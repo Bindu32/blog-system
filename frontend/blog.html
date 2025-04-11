@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Full Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000; /* black background */
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .blog-card {
+      background: rgba(255, 255, 255, 0.05); /* translucent layer */
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      max-width: 800px;
+      width: 100%;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .blog-card h1 {
+      color: violet;
+      margin-bottom: 1rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: gray;
+      margin-bottom: 1rem;
+    }
+
+    .category {
+      color: orange;
+      font-weight: bold;
+    }
+
+    .blog-content {
+      line-height: 1.6;
+      margin-top: 1.5rem;
+    }
+
+    a {
+      color: cyan;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="blog-card" id="fullBlogContainer">
+      <!-- Blog content loads here -->
+    </div>
+  </div>
+
+  <script src="blog.js"></script>
+</body>
+</html>

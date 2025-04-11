@@ -223,7 +223,7 @@
       const password = document.querySelector('input[name="password"]').value.trim();
   
       try {
-        const res = await fetch('http://localhost:3000/api/register', {
+        const res = await fetch('http://localhost:5000/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, email, password }),
@@ -263,7 +263,6 @@ document.getElementById('togglePassword').addEventListener('click', () => {
 });
 </script>
 
-  
   <script>
     function googleLogin() {
       const googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";

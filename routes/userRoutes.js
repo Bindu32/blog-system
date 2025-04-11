@@ -54,4 +54,18 @@ router.delete('/delete', authenticateUser, async (req, res) => {
   }
 });
 
+// Get all posts by the logged-in user
+router.get('/user/me/posts', authenticateUser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const posts = await BlogPost.find({ author: userId }).sort({ createdAt: -1 });
+    res.json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch your posts' });
+  }
+});
+
+
+
 module.exports = router;

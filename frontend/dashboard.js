@@ -1,115 +1,195 @@
-// Sample data - replace with fetch from backend
-const blogs = [
-  {
-    id: 1,
-    title: "How I built my first project",
-    content: "It all started with an idea...",
-    likes: 0, // Set likes to 0
-    dislikes: 0, // Set dislikes to 0
-    comments: [], // Set comments to an empty array
-  },
-  {
-    id: 2,
-    title: "Understanding JavaScript Closures",
-    content: "Closures are powerful...",
-    likes: 0, // Set likes to 0
-    dislikes: 0, // Set dislikes to 0
-    comments: [], // Set comments to an empty array
-  },
-];
+const blogFeed = document.getElementById('blog-feed');
 
-// Track user likes and dislikes
-const userLikes = JSON.parse(localStorage.getItem("userLikes")) || {};
-const username = localStorage.getItem("username") || "Guest";
+async function fetchBlogs() {
+  try {
+    const res = await fetch('http://localhost:5000/api/blogs');
+    const blogs = await res.json();
 
-// Function to render blogs dynamically
-function renderBlogs() {
-  const blogList = document.getElementById("blog-list");
-  blogList.innerHTML = ""; // Clear existing blogs
+    blogFeed.innerHTML = '';
 
-  blogs.forEach((blog) => {
-    const isLiked = userLikes[username]?.likes?.includes(blog.id); // Check if the user has liked this blog
+    blogs.reverse().forEach(blog => {
+      const shortContent = blog.content?.slice(0, 150) || '';
+      const shortCategory = (blog.category || 'Uncategorized').slice(0, 20);
 
-    const card = document.createElement("div");
-    card.className = "blog-card";
-    card.innerHTML = `
-      <div class="blog-title">${blog.title}</div>
-      <p>${blog.content.substring(0, 150)}...</p>
-      <div class="blog-actions">
-        <button class="like-btn" onclick="toggleLike(${blog.id})">
-          ❤️ <span id="like-count-${blog.id}">${blog.likes}</span>
-        </button>
-        <button class="comment-btn" onclick="toggleComments(${blog.id})">
-          💬 <span id="comment-count-${blog.id}">${blog.comments.length}</span>
-        </button>
-      </div>
-      <div class="comments-section" id="comments-${blog.id}" style="display: none;">
-        <h4>Comments:</h4>
-        <ul>
-          ${blog.comments.map((comment) => `<li>${comment}</li>`).join("")}
-        </ul>
-        <textarea placeholder="Add a comment..." id="comment-input-${blog.id}"></textarea>
-        <button onclick="addComment(${blog.id})">Post Comment</button>
-      </div>
-    `;
-    blogList.appendChild(card);
+      const blogCard = document.createElement('div');
+      blogCard.style.border = '2px solid';
+      blogCard.style.borderImage = 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1';
+      blogCard.style.borderRadius = '1rem';
+      blogCard.style.padding = '1rem';
+      blogCard.style.background = '#111';
+
+      blogCard.innerHTML = `
+        <h3 style="color: violet;">${blog.title}</h3>
+        <p style="color: gray;">by <a href="#" style="color: cyan;">${blog.author?.username || 'Unknown'}</a></p>
+        <p style="margin: 1rem 0;">${shortContent}...</p>
+        <p><strong>Category:</strong> <span style="color: orange;">${shortCategory}</span></p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button id="like-${blog._id}" onclick="likeBlog('${blog._id}')" style="${buttonStyle()}">👍 ${blog.likes.length}</button>
+
+          <button onclick="dislikeBlog('${blog._id}')" style="${buttonStyle()}">👎 ${blog.dislikes.length}</button>
+          
+
+          <button onclick="commentOnBlog('${blog._id}')" style="${buttonStyle()}">💬 Comments (${blog.comments.length})</button>
+          <button onclick="saveBlog('${blog._id}')" style="${buttonStyle()}">💾 Save</button>
+          <button class="editBtn" data-id="${blog._id}" style="${buttonStyle()}">✏️ Edit</button>
+          <h3 onclick="viewFullBlog('${blog._id}')" style="cursor: pointer; color: violet;">${blog.title}</h3>
+
+        </div>
+      `;
+
+      blogFeed.appendChild(blogCard);
+    });
+  } catch (err) {
+    console.error('Error fetching blogs:', err);
+  }
+}
+
+
+
+function buttonStyle() {
+  return `
+    background: none;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  `;
+}
+
+// Navigate to Create Blog Page
+document.getElementById('createBlogBtn')?.addEventListener('click', () => {
+  window.location.href = 'create.html';
+});
+
+// Listen for Edit buttons (after blogs are loaded)
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('editBtn')) {
+    const blogId = e.target.dataset.id;
+    window.location.href = `edit.html?id=${blogId}`;
+  }
+});
+
+
+// 📌 Action handlers
+
+
+// Like a blog
+async function likeBlog(id) {
+  const token = localStorage.getItem('token');
+  const res = await fetch(`http://localhost:5000/api/blogs/${id}/like`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    }
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    alert(`Like failed: ${err.message}`);
+    return;
+  }
+
+  // ✅ Increase count on button
+  const likeBtn = document.getElementById(`like-${id}`);
+  if (likeBtn) {
+    const currentCount = parseInt(likeBtn.textContent.match(/\d+/)[0]); // extract number
+    likeBtn.innerHTML = `👍 ${currentCount + 1}`;
+  }
+}
+
+
+async function dislikeBlog(id) {
+  await fetch(`http://localhost:5000/api/blogs/${id}/dislike`, {
+    method: 'POST',
+    headers: { 'Authorization': localStorage.getItem('token') }
+  });
+  fetchBlogs();
+}
+
+
+function commentOnBlog(blogId) {
+  const comment = prompt('💬 Enter your comment:');
+  if (!comment) return;
+
+  fetch(`http://localhost:5000/api/blogs/${blogId}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify({ text: comment })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert('✅ Comment added!');
+    fetchBlogs(); // reload with new comment count
+  })
+  .catch(err => {
+    alert('❌ Error posting comment');
+    console.error(err);
   });
 }
 
-// Toggle like functionality
-function toggleLike(blogId) {
-  const blog = blogs.find((b) => b.id === blogId);
-  if (!blog) return;
+//<button onclick="window.location.href='comments.html?id=${blog._id}'" style="${buttonStyle()}">💬 Comments (${blog.comments.length})</button>
 
-  const userLikedBlogs = userLikes[username]?.likes || [];
-  if (userLikedBlogs.includes(blogId)) {
-    // Unlike the blog
-    blog.likes--;
-    userLikes[username].likes = userLikedBlogs.filter((id) => id !== blogId);
-  } else {
-    // Like the blog
-    blog.likes++;
-    userLikes[username] = {
-      ...userLikes[username],
-      likes: [...userLikedBlogs, blogId],
-    };
-  }
 
-  // Save updated data to localStorage
-  localStorage.setItem("blogs", JSON.stringify(blogs));
-  localStorage.setItem("userLikes", JSON.stringify(userLikes));
-
-  // Re-render blogs
-  renderBlogs();
+async function saveBlog(id) {
+  await fetch(`http://localhost:5000/api/user/save/${id}`, {
+    method: 'POST',
+    headers: { 'Authorization': localStorage.getItem('token') }
+  });
+  alert('Blog saved!');
 }
 
-// Toggle comments section
-function toggleComments(blogId) {
-  const commentsSection = document.getElementById(`comments-${blogId}`);
-  commentsSection.style.display =
-    commentsSection.style.display === "none" ? "block" : "none";
+function viewFullBlog(blogId) {
+  window.location.href = `blog.html?id=${blogId}`;
 }
 
-// Add a new comment
-function addComment(blogId) {
-  const commentInput = document.getElementById(`comment-input-${blogId}`);
-  const newComment = commentInput.value.trim();
-  if (newComment) {
-    const blog = blogs.find((b) => b.id === blogId);
-    if (blog) {
-      blog.comments.push(newComment);
-      commentInput.value = ""; // Clear the input field
-      renderBlogs(); // Re-render blogs to update the comments
-    }
-  }
+function toggleSidePanel() {
+  document.getElementById('sidePanel').classList.toggle('open');
 }
 
-// Logout functionality
 function logout() {
-  window.location.href = "index.html";
+  localStorage.removeItem('token');
+  window.location.href = 'login.html';
 }
 
-// Initialize the dashboard
-document.addEventListener("DOMContentLoaded", () => {
-  renderBlogs(); // Render blogs when the page loads
-});
+function goToSettings() {
+  window.location.href = 'settings.html';
+}
+
+async function loadDashboardUser() {
+  const token = localStorage.getItem('token');
+  try {
+    const res = await fetch('http://localhost:5000/api/users/me', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message);
+
+    // Profile Picture
+    const profilePic = data.profilePic || 'default-profile.png';
+    document.getElementById('dashboardProfilePic').src = profilePic;
+    document.getElementById('sidePanelProfilePic').src = profilePic;
+
+    // Username, Posts, Likes
+    document.getElementById('sideUsername').innerText = '@' + data.username;
+    document.getElementById('postCount').innerText = data.blogs.length;
+    document.getElementById('likeCount').innerText = data.totalLikes;
+
+  } catch (err) {
+    console.error('Error loading dashboard user:', err.message);
+  }
+}
+
+loadDashboardUser();
+
+
+fetchBlogs();

@@ -32,6 +32,10 @@ app.use('/api', blogRoutes);
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/user', userRoutes);
 
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/api/admin', adminRoutes);
+
+
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'frontend')));

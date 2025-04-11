@@ -1,0 +1,45 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="admin.js"></script>
+  <style>
+    body { background-color: #111; color: white; font-family: Arial, sans-serif; }
+    h1 { color: cyan; text-align: center; }
+    .section { margin: 2rem auto; max-width: 800px; }
+    .section h2 { border-bottom: 1px solid cyan; padding-bottom: 0.5rem; }
+    .user-card, .blog-card {
+      border: 1px solid gray;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: #222;
+    }
+    button {
+      background: transparent;
+      border: 1px solid red;
+      color: red;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛡️ Admin Panel</h1>
+  <div class="section" id="userSection">
+    <h2>All Users</h2>
+    <div id="usersList"></div>
+  </div>
+
+  <div class="section" id="blogSection">
+    <h2>All Blog Posts</h2>
+    <div id="blogsList"></div>
+  </div>
+</body>
+</html>

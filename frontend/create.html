@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Blog</title>
+</head>
+<body style="background: #000; color: white; font-family: Arial, sans-serif; padding: 2rem;">
+
+  <h1 style="text-align: center; background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet); padding: 1rem; border-radius: 1rem;">✍️ Create a New Blog</h1>
+
+  <form id="createBlogForm" style="display: flex; flex-direction: column; gap: 1.2rem; max-width: 600px; margin: 2rem auto; padding: 2rem; background: #111; border-radius: 1rem; border: 2px solid transparent; border-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red) 1;">
+    
+    <input type="text" id="title" placeholder="Blog Title" required style="padding: 1rem; border-radius: 0.5rem; border: none; font-size: 1rem;" />
+    
+    <textarea id="content" rows="10" placeholder="Write your blog content here..." required style="padding: 1rem; border-radius: 0.5rem; border: none; font-size: 1rem;"></textarea>
+    
+    <input type="text" id="category" placeholder="Category (e.g. Tech, Travel, Food)" style="padding: 1rem; border-radius: 0.5rem; border: none; font-size: 1rem;" />
+    <select id="category" required>
+        <option value="">Select Category</option>
+        <option value="Technology">Technology</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Travel">Travel</option>
+        <option value="Education">Education</option>
+      </select>
+      
+    <button type="submit" style="
+      padding: 1rem;
+      font-size: 1.1rem;
+      color: white;
+      border: 2px solid;
+      border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+      border-radius: 0.5rem;
+      background: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    ">🚀 Publish Blog</button>
+  </form>
+
+  <script src="create.js"></script>
+</body>
+</html>

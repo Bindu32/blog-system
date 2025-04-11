@@ -2,37 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - BlogSpace</title>
-  <link rel="stylesheet" href="dashboard.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <h1>Spectrum Blog</h1>
-    <div class="user-options">
-      <button onclick="window.location.href='settings.html'" class="settings-btn">⚙️ Settings</button>
-      <button onclick="window.location.href='create-blog.html'" class="create-btn">➕ Create Blog</button>
-      <button onclick="window.location.href='edit-blog.html'" class="edit-btn">✏️ Edit Blog</button>
-      <button onclick="window.location.href='profile.html'" class="profile-btn">👤 Profile</button>
-      <button onclick="logout()" class="logout-btn">Logout</button>
-    </div>
+
+<button id="createBlogBtn" style="margin: 20px; padding: 10px 20px; border-radius: 8px; border: 2px solid #ff00ff; color: white; background-color: black; cursor: pointer;">
+  ➕ Create Blog
+</button>
+
+<button class="editBtn" data-id="${blog._id}" style="padding: 5px 10px; border-radius: 5px; border: 1px solid cyan; background: transparent; color: cyan; cursor: pointer;">
+  ✏️ Edit
+</button>
+
+<body style="background-color: #000; font-family: Arial, sans-serif; color: white; margin: 0; padding: 0;">
+
+  <header style="padding: 1rem; background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet); text-align: center;">
+    <h1 style="margin: 0; background: black; padding: 0.5rem; border-radius: 1rem;">📝 Blog Dashboard</h1>
   </header>
 
-  <main>
-    <h2>Latest Blogs</h2>
-    <div id="blog-list" class="blog-container">
-      <!-- Blogs will be dynamically inserted here -->
-    </div>
+  <main id="blog-feed" style="padding: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">
+    <!-- Blogs will be injected here -->
   </main>
 
-  <footer>
-    <p>&copy; 2025 Spectrum Blog. All rights reserved.</p>
-    <p>Follow us on:
-      <a href="https://facebook.com" target="_blank">Facebook</a> |
-      <a href="https://twitter.com" target="_blank">Twitter</a> |
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-    </p>
-  </footer>
+<!-- Header -->
+<div class="header-bar">
+  <div class="right-icons">
+    <img src="default-profile.png" id="dashboardProfilePic" class="top-profile" onclick="toggleSidePanel()" />
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<!-- Side Panel -->
+<div id="sidePanel" class="side-panel">
+  <span class="close-btn" onclick="toggleSidePanel()">✖</span>
+  <img src="default-profile.png" id="sidePanelProfilePic" class="profile-pic-large" />
+  <div id="sideUsername" class="username">@username</div>
+  <hr />
+  <div class="stats">📝 Posts: <span id="postCount">0</span></div>
+  <div class="stats">❤️ Likes: <span id="likeCount">0</span></div>
+  <hr />
+  <button onclick="goToSettings()" class="settings-btn">⚙️ Settings</button>
+</div>
+
+
 
   <script src="dashboard.js"></script>
 </body>
